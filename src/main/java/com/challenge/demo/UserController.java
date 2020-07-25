@@ -131,10 +131,14 @@ public class UserController {
             if(questionsRepository.findById(question_id).isPresent())
                 questions.remove(questionsRepository.findById(question_id).orElse(new Question()));
         }
-        Question newQu = questions.get(0);
-        if(user1 != null && site != null) {
-            user1.getOccurd().add(newQu.getQuestionId());
+        Question newQu;
+        if(questions.isEmpty()) {
+            user1.getOccurd().clear();
+            questions = questionsRepository.findSiteQuestions(siteId);
         }
+        newQu = questions.get(0);
+        user1.getOccurd().add(newQu.getQuestionId());
+
         userRepository.save(user1);
         Long newQuId = newQu.getQuestionId();
         return questionsRepository
