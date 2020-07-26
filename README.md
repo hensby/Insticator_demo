@@ -11,10 +11,11 @@ Design a User class, QuestionHistory class and add a Type attribute in Question 
 
 ## Install and Run
 Install H2 database and set username = 'sa' and password = ''. 
-
 The table and data structure will be created automatically.
 
+Install Java 1.8 and import the project by using Maven.
 
+Run "DemoApplication.java"
 
 ## Missing Requirements:
 1) Add a Type attribute in Questions Class. Easy to front-end developers to figure out the question type. 
