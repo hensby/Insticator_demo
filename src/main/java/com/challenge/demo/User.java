@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 
+// create by Hengchao
 @Entity
 @Table(name = "user")
 @EntityListeners(AuditingEntityListener.class)

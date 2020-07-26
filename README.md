@@ -21,7 +21,7 @@ Run "DemoApplication.java"
 1) Add a Type attribute in Questions Class. Easy to front-end developers to figure out the question type. 
 (E.g. For matrix questions in Appendix, add answers like "<18, Male","<18, Female",""18 to 35, Male" .etc. 
 When front-end developers get type of question is 4, they can analysis the answer to matrix questions)
-2) Built two APIs. 
+2) Built three APIs. 
 
 User gets new questions what he never has. If a unique question does not exist, It will return an old question.
 ````
@@ -32,6 +32,11 @@ User returns the question answer to System and store the history.
 ````
 HTTPS://localhost:8080/{user_uuid}/{question_id}/{question_answer_id}/answer"
 ````
+
+Get user history
+```
+curl -H "Content-Type:application/json" -X GET http://localhost:8080/users/{{user_id}}/historys
+```
 
 ## Test cases:
 ```
@@ -68,6 +73,10 @@ http://localhost:8080/users/{user_uuid}/{site_uuid}/new_questions
 // return the answer from user and store it
 curl -H "Content-Type:application/json" -X POST http://localhost:8080/users/{{user_uuid}}/{{question_id}}/{{question_answer_id}}/answer
 (e.g. curl -H "Content-Type:application/json" -X POST http://localhost:8080/users/5952352e8752449aa5bbfb4f95d801d4/4/6/answer)
+
+// get answer history for user
+curl -H "Content-Type:application/json" -X GET http://localhost:8080/users/{{user_id}}/historys
+(e.g. curl -H "Content-Type:application/json" -X GET http://localhost:8080/users/2/historys)
 ```
 
 

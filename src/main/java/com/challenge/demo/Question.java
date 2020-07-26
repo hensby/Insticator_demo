@@ -42,6 +42,7 @@ public class Question implements Serializable {
 	@JoinColumn(name = "site_id", referencedColumnName = "site_id")
 	private Site site;
 
+	// create by Hengchao: 1--> Trivia, 2--> Poll, 3--> checkBox, 4--> matrix
 	@Column(nullable = false, name = "type")
 	private Long type;
 

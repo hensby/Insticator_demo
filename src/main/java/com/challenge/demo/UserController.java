@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+// create by Hengchao
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -84,6 +85,7 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    // get history for user
     @GetMapping("/{id}/historys")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<QuestionHistoryDTO>> getQuestionHistorys(@PathVariable(value = "id") Long userId) {
@@ -93,6 +95,7 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    // get new questions for user
     @GetMapping("/{user_uuid}/{site_uuid}/new_questions")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<QuestionDTO> getQuestion(@PathVariable(value = "user_uuid") String userUuid, @PathVariable(value = "site_uuid") String siteUuid) {
@@ -147,6 +150,7 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    // return and store the answer of each user
     @PostMapping("/{user_uuid}/{question_id}/{question_answer_id}/answer")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<QuestionHistoryDTO> setAnswer(@PathVariable(value = "user_uuid") String userUuid, @PathVariable(value = "question_id") Long questionId, @PathVariable Long question_answer_id) {
