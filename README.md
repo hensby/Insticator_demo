@@ -25,3 +25,41 @@ User returns the question answer to System and store the history.
 HTTPS://localhost:8080/{user_uuid}/{question_id}/{question_answer_id}/answer"
 ````
 
+### Test cases:
+```
+// add site
+curl -H "Content-Type:application/json" -X POST -d '{"url": "www.Bob.com"}' http://localhost:8080/sites
+
+// add user
+curl -H "Content-Type:application/json" -X POST -d '{}' http://localhost:8080/users          
+
+// add question (Trivia question)
+curl -H "Content-Type:application/json" -X POST -d '{"siteId":1, "question":"whitch team won the 2013 superbowl?","type":1}' http://localhost:8080/questions
+
+// add question (Matrix question)
+curl -H "Content-Type:application/json" -X POST -d '{"siteId":1, "question":"Please tell us a bit about you?","type":4}' http://localhost:8080/questions
+
+// add answer (Trivia question)
+curl -H "Content-Type:application/json" -X POST -d '{"answer":"Falcons","isCorrectAnswer": false}' http://localhost:8080/questions/{{question_id}}/answers
+curl -H "Content-Type:application/json" -X POST -d '{"answer":"Patriots","isCorrectAnswer": true}' http://localhost:8080/questions/{{question_id}}/answers
+
+// add answer (Matrix question)
+curl -H "Content-Type:application/json" -X POST -d '{"answer":"<18, Male","isCorrectAnswer": false}' http://localhost:8080/questions/{{question_id}}/answers
+curl -H "Content-Type:application/json" -X POST -d '{"answer":"<18, Female","isCorrectAnswer": false}' http://localhost:8080/questions/{{question_id}}/answers
+curl -H "Content-Type:application/json" -X POST -d '{"answer":"18 to 35, Male","isCorrectAnswer": false}' http://localhost:8080/questions/{{question_id}}/answers
+curl -H "Content-Type:application/json" -X POST -d '{"answer":"18 to 35, Female","isCorrectAnswer": false}' http://localhost:8080/questions/{{question_id}}/answers
+curl -H "Content-Type:application/json" -X POST -d '{"answer":"35 to 55, Male","isCorrectAnswer": false}' http://localhost:8080/questions/{{question_id}}/answers
+curl -H "Content-Type:application/json" -X POST -d '{"answer":"35 to 55, Female","isCorrectAnswer": false}' http://localhost:8080/questions/{{question_id}}/answers
+curl -H "Content-Type:application/json" -X POST -d '{"answer":">55, Male","isCorrectAnswer": false}' http://localhost:8080/questions/{{question_id}}/answers
+curl -H "Content-Type:application/json" -X POST -d '{"answer":">55, Female","isCorrectAnswer": false}' http://localhost:8080/questions/{{question_id}}/answers
+
+// get new question for user
+http://localhost:8080/users/{user_uuid}/{site_uuid}/new_questions
+(e.g.http://localhost:8080/users/5952352e8752449aa5bbfb4f95d801d4/03a7384afcb14cf0a9a0df4cf82715b6/new_questions)
+
+// return the answer from user and store it
+curl -H "Content-Type:application/json" -X POST http://localhost:8080/users/{{user_uuid}}/{{question_id}}/{{question_answer_id}}/answer
+(e.g. curl -H "Content-Type:application/json" -X POST http://localhost:8080/users/5952352e8752449aa5bbfb4f95d801d4/4/6/answer)
+```
+
+
