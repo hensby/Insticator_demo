@@ -9,7 +9,7 @@ A backend system based on Spring-boots
 
 Design a USER class, QuestionHistory class and add a Type attribute in Question class.
 
-##Missing Requirements:
+## Missing Requirements:
 1) Add a Type attribute in Questions Class. Easy to front-end developers to figure out the question type. 
 (E.g. For matrix questions in Appendix, add answers like "<18, Male","<18, Female",""18 to 35, Male" .etc. 
 When front-end developers get type of question is 4, they can analysis the answer to matrix questions)
