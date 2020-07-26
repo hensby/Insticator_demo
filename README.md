@@ -5,9 +5,16 @@
 ![](https://img.shields.io/badge/Plugin-JPA-red)
 ![](https://img.shields.io/badge/DB-H2-blue)
 
-A backend system based on Spring-boots
+A backend system based on Spring-boots, H2 database.
 
-Design a USER class, QuestionHistory class and add a Type attribute in Question class.
+Design a User class, QuestionHistory class and add a Type attribute in Question class.
+
+## Install and Run
+Install H2 database and set username = 'sa' and password = ''. 
+
+The table and data structure will be created automatically.
+
+
 
 ## Missing Requirements:
 1) Add a Type attribute in Questions Class. Easy to front-end developers to figure out the question type. 
@@ -25,7 +32,7 @@ User returns the question answer to System and store the history.
 HTTPS://localhost:8080/{user_uuid}/{question_id}/{question_answer_id}/answer"
 ````
 
-### Test cases:
+## Test cases:
 ```
 // add site
 curl -H "Content-Type:application/json" -X POST -d '{"url": "www.Bob.com"}' http://localhost:8080/sites
