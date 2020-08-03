@@ -38,7 +38,6 @@ public class QuestionDTO {
         for (Question question : questions) {
             ret.add(build(question));
         }
-
         return ret;
     }
 
