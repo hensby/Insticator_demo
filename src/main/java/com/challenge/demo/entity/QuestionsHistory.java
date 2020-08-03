@@ -1,4 +1,4 @@
-package com.challenge.demo;
+package com.challenge.demo.entity;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

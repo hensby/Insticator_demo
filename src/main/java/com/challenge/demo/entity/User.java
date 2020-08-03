@@ -1,4 +1,4 @@
-package com.challenge.demo;
+package com.challenge.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;

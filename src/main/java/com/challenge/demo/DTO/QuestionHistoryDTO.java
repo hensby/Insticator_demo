@@ -1,4 +1,7 @@
-package com.challenge.demo;
+package com.challenge.demo.DTO;
+
+import com.challenge.demo.entity.Question;
+import com.challenge.demo.entity.QuestionsHistory;
 
 import java.util.ArrayList;
 import java.util.Date;

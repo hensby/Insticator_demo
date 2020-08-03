@@ -1,5 +1,15 @@
-package com.challenge.demo;
+package com.challenge.demo.controller;
 
+import com.challenge.demo.DTO.QuestionDTO;
+import com.challenge.demo.DTO.QuestionHistoryDTO;
+import com.challenge.demo.entity.Question;
+import com.challenge.demo.entity.QuestionsHistory;
+import com.challenge.demo.entity.Site;
+import com.challenge.demo.entity.User;
+import com.challenge.demo.repository.QuestionRepository;
+import com.challenge.demo.repository.QuestionsHistoryRepository;
+import com.challenge.demo.repository.SiteRepository;
+import com.challenge.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +49,7 @@ public class UserController {
 //        if (siteRepository.findById(createUser.getSiteId()).isPresent()) {
 //            System.out.println(1111);
 //                createUser.setSiteId((long)1);
-            return userRepository.save(createUser);
+        return userRepository.save(createUser);
 //        }
 //        System.out.println("there isn't valid site id");
 //        return null;
@@ -153,7 +163,10 @@ public class UserController {
     // return and store the answer of each user
     @PostMapping("/{user_uuid}/{question_id}/{question_answer_id}/answer")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<QuestionHistoryDTO> setAnswer(@PathVariable(value = "user_uuid") String userUuid, @PathVariable(value = "question_id") Long questionId, @PathVariable Long question_answer_id) {
+    @ResponseBody
+    public ResponseEntity<QuestionHistoryDTO> setAnswer(
+            @PathVariable(value = "user_uuid") String userUuid, @PathVariable(value = "question_id") Long questionId, @PathVariable Long question_answer_id) {
+
         String s1 = userUuid.replace("-", "");
         UUID user_uuid = new UUID(
                 new BigInteger(s1.substring(0, 16), 16).longValue(),
